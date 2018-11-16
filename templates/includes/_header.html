@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-dark " style="background-color:#428BCA; color:white;">
+    <a class="navbar-brand mr-auto mr-lg-0" href="#">MY App</a>
+    <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            {% if session.logged_in %}
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard">Dashboard&nbsp &nbsp<span class="glyphicon glyphicon-th"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/recentdocs">Recent_docs&nbsp &nbsp<span class="glyphicon glyphicon-folder-open"></span></a>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link" href="/documents">Documents</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/profile"> &nbsp &nbsp<span class="glyphicon glyphicon-user"></span> Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">logout&nbsp &nbsp<span class="glyphicon glyphicon-logout"></span></a>
+            </li>
+            {% else %}
+
+            <li class="nav-item">
+                <a class="nav-link" href="/articles">&nbsp &nbsp<span class="glyphicon glyphicon-file"></span>Articles</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/register">Register&nbsp &nbsp<span class="glyphicon glyphicon-plus-sign"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/login">login&nbsp &nbsp<span class="glyphicon glyphicon-new-window"></span></a>
+            </li>
+
+            {% endif %}
+
+
+
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search Documents" aria-label="Search">
+            <button class="btn btn-outline-default my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<div class="nav-scroller bg-white shadow-lg">
+    <nav class="nav nav-underline">
+        <a class="nav-link active" href="/"> <span class="glyphicon glyphicon-home" style="font-size:25px;"></span></a>
+        <a class="nav-link" href="/"><span class="glyphicon glyphicon-trash" style="font-size:25px;"></span></a>
+        <a class="nav-link" href="/"><span class="glyphicon glyphicon-floppy-open" style="font-size:25px;"></span></a>
+
+        <a class="nav-link" href="/"><span class="glyphicon glyphicon-fire" style="font-size:25px;"></span></a>
+
+    </nav>
+</div>

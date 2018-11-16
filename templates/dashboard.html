@@ -1,0 +1,38 @@
+{% extends 'layout.html'%} 
+
+{% block body %}
+<h4>Dash-Board&nbsp &nbsp<small style="color:green; font-weight:bold;"><span class="glyphicon glyphicon-user glyphicon-success">&nbsp </span >{{session.username}}</small>
+</h4>
+<hr>
+
+<a href="/add_article"><span class="glyphicon glyphicon-floppy-open" style="font-size:25px;"></span></a>
+
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Date</th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    {% for article in articles  %}
+    <tr>
+        <td>{{article[0]}}</td>
+        <td>{{article[1]}}</td>
+        <td>{{article[2]}}</td>
+        <td>{{article[4]}}</td>
+        <td><a href=" edit_article/{{article[0]}}" class="btn btn-primary  pull-right">Edit</a></td>
+        <td>
+        <form action="{{url_for('delete_article',id = article.id)}}" method ="post">
+        <input type ="hidden" name = "_method" value = "DELETE">
+          <input type ="submit"  value = "DELETE" class ="btn btn-danger">
+
+        </form>
+        
+        </td>
+    </tr>
+    {% endfor%}
+</table>
+{% endblock body %}%}
