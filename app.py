@@ -44,7 +44,7 @@ def articles():
   cur = mysql.connection.cursor()
 
   # get article
-  results = cur.execute("SELECT * FROM articles")
+  cur.execute(" SELECT * FROM articles ")
 
   articles = cur .fetchall()
 
@@ -241,14 +241,15 @@ def add_article():
 
 
   # Edit article
-@app.route('/edit_article/<string:id>' , methods = ['GET','POST'])
+@app.route('/edit_article/<string:id>' , methods = [ 'GET' , 'POST' ])
 @is_logged_in
 def edit_article(id):
   # creaate cursor
   cur = mysql.connection.cursor()
 
   # get article by id
-  result = cur.execute("SELECT * FROM articles WHERE id = %s",[id])
+  cur.execute("SELECT * FROM articles WHERE id = %s",[id])
+
   article = cur.fetchone()
 
   # get form
@@ -265,7 +266,7 @@ def edit_article(id):
       cur = mysql.connection. cursor()
 
       # excecute
-      cur.execute("UPDATE articles SET title = %s , body = %s WHERE id = %s " ,( title,body ,id))  
+      cur.execute(" UPDATE articles SET title = %s , body = %s WHERE id = %s  " ,( title , body , id ))  
 
       # commit
       mysql.connection.commit()
@@ -273,9 +274,9 @@ def edit_article(id):
       # close
       cur.close()
 
-      flash('Article updated', 'success')
+      flash(' Article updated ' , ' success ')
 
-      return redirect(url_for('dashboard'))
+      return redirect(url_for(' dashboard '))
 
   return render_template('edit_article.html', form = form)
 

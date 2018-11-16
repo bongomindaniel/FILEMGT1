@@ -1,16 +1,18 @@
-{% extends 'layout.html'%}
+{% extends ' layout.html ' %}
 
- {% block body%}
-<h3> EDIT  Aricles</h3>
+ {% block body %}
 
-{% from "includes/_formhelpers.html" import render_field%}
+ <h3> EDIT  Aricle</h3>
 
-<form method="POST" action="">
+{% from "includes/_formhelpers.html" import render_field %}
+
+<form method=" POST " >
     <div class="form-group">
-        {{render_field(form[1] , class_= "form-control")}}
+        {{render_field(form.title , class_= "form-control")}}
     </div>
     <div class="form-group">
-        {{render_field(form[2] , class_= "form-control", id = "editor")}}
+        {{render_field(form.body, class_= "form-control", id = "editor")}}
     </div>
-    <p><input class="btn btn-primary" type="submit" value="submit"> 
-    {% endblock %}
+    <p><input type = "submit" type = "submit" value = "submit">
+
+{% endblock %}
