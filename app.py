@@ -255,7 +255,7 @@ def edit_article(id):
   # get form
   form = ArticleForm(request.form)
 
-  # populate article form field
+  # populate article form fieldmys 
   form.title.data = article['title']
   form.body.data = article['body']
   if request.method == 'POST' and form.validate():
