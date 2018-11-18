@@ -44,7 +44,7 @@ def articles():
   cur = mysql.connection.cursor()
 
   # get article
-  cur.execute(" SELECT * FROM articles ")
+  results = cur.execute(" SELECT * FROM articles ")
 
   articles = cur .fetchall()
 
@@ -194,7 +194,7 @@ def dashboard():
 
   articles = cur.fetchall()
 
-  if articles > 0:
+  if article > 0:
     return render_template('dashboard.html' , articles = articles)
 
   else:
@@ -255,7 +255,7 @@ def edit_article(id):
   # get form
   form = ArticleForm(request.form)
 
-  # populate article form fieldmys 
+  # populate article form fieldgit 
   form.title.data = article['title']
   form.body.data = article['body']
   if request.method == 'POST' and form.validate():
