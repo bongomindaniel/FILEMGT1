@@ -255,7 +255,7 @@ def edit_article(id):
   # get form
   form = ArticleForm(request.form)
 
-  # populate article form fieldgit 
+  # populate article form fieldgit f
   form.title.data = article['title']
   form.body.data = article['body']
   if request.method == 'POST' and form.validate():
@@ -314,4 +314,4 @@ def edit_article(id):
 
 if __name__ == '__main__':
      app.secret_key = 'secret123'
-     app.run(debug = True)
+     app.run(debug = True)  
