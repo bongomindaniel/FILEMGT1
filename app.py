@@ -122,7 +122,7 @@ def register():
        redirect(url_for('index')) 
     return render_template('register.html', form=form)  
 
-#user login     
+#user login   
 @app.route('/login',methods=['GET','POST'])
 def login():
   if request.method == 'POST':
@@ -238,12 +238,24 @@ def add_article():
 
   return render_template('add_article.html', form = form)   
 
+@app.route('/get_article/<int:id>')
+def get_article(id):
+  form = ArticleForm(request.form)
+  cur = mysql.connection. cursor()
 
+      # excecute
+  cur.execute("SELECT title,body FROM articles WHERE id='{}'".format(id))  
+
+  the_article = cur.fetchone()
+
+  print(the_article[0])
+  return render_template('edit_article.html', form = form, article = the_article)
 
   # Edit article
-@app.route('/edit_article/<string:id>' , methods = [ 'GET' , 'POST' ])
+@app.route('/edit_article/<int:id>' , methods = [ 'GET' , 'POST' ])
 @is_logged_in
 def edit_article(id):
+
   # creaate cursor
   cur = mysql.connection.cursor()
 
