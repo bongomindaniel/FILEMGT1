@@ -1,6 +1,7 @@
 {% extends 'layout.html'%} 
 
 {% block body %}
+<div class="container">
 <h4>Dash-Board&nbsp &nbsp<small style="color:green; font-weight:bold;"><span class="glyphicon glyphicon-user glyphicon-success">&nbsp </span >{{session.username}}</small>
 </h4>
 <hr style="border-color:#428BCA">
@@ -35,4 +36,6 @@
     </tr>
     {% endfor%}
 </table>
+
+</div>
 {% endblock body %}%}

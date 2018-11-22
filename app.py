@@ -274,7 +274,7 @@ def edit_article(id):
       title = request.form['title']
       body = request.form['body']
 
-      # create cursor
+    
       cur = mysql.connection. cursor()
 
       # excecute
