@@ -5,6 +5,9 @@ from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
 from MySQLdb.cursors import DictCursor
 from functools import wraps
+import os
+
+from werkzeug import secure_filename
 
 app = Flask(__name__)
 
@@ -13,6 +16,8 @@ app.config['MYSQL_HOST'] ='localhost'
 app.config['MYSQL_USER'] = 'danny'
 app.config['MYSQL_PASSWORD'] ="danny123"
 app.config['MYSQL_DB']='myflaskapp'
+
+app.config['UPLOAD_FOLDER'] = '/home/danny/Desktop/uploads'
 # app.config['MYSQL_CURSORCLASS'] = 'DictCusor'
 
 # mysql = MySQL()
@@ -317,6 +322,36 @@ def edit_article(id):
 
     return redirect(url_for('dashboard'))
 
+
+@app.route('/uploads', methods=['GET', 'POST'])
+def upload_doc():
+  if request.method == 'POST':
+    our_doc = request.files['file']
+    name = secure_filename(our_doc.filename)
+    path = os.path.join(app.config['UPLOAD_FOLDER'],name)
+    our_doc.save(path)
+
+    try:
+      cur = mysql.connection.cursor()
+
+      # excecute
+      sql = "INSERT INTO documents(document) values('{}')".format(our_doc.read())
+      cur.execute(sql)
+
+    # commit
+      mysql.connection.commit()
+
+    # close
+      cur.close()
+
+      flash('Successfully saved the document to database', 'success')
+    except Exception as e:
+      raise(e)
+      flash('Error', 'danger')
+
+
+  return render_template('documents.html')
+  
 
 
 

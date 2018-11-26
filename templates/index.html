@@ -11,7 +11,7 @@
   <div class="row" style="">
       <div class="col-md-3">
       <ul class="list-group list-group-flush">
-  <li class="list-group-item"><h4 style="font-wieght:bold; color:blue;">MY DOCS APP</h4></li>
+  <li class="list-group-item"><h4 style="font-wieght:bold; color:#428BCA;">MY DOCS APP</h4></li>
   <li class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span> &nbsp Document Share </li>
   <li class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span> &nbspArticle Store & Share</li>
   <li class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span> &nbspPassword store</li>
@@ -23,9 +23,20 @@
       </div>
       <div class="col-md-9" style = "">
       <div style="border: solid  1px; border-radius:5px; height:320px; padding:10px;">
-      <h4 style="font-wieght:bold;"><span class="glyphicon glyphicon-tags" style="font-size:20px;"></span> &nbspTHE DOCUMENT MANAGEMENT SYSTEM</h4>
+      <h4 style="font-wieght:bold;"><span class="glyphicon glyphicon-tags" style="font-size:20px;color:#428BCA;"></span> &nbspTHE DOCUMENT MANAGEMENT SYSTEM</h4>
       <hr style = "border-color:#428BCA;">
-    
+    <form class="md-form" enctype="multipart/form-data" method="POST">
+                        <div class="file-field">
+                            <div class="btn btn-info btn-sm float-left">
+                                <span>Choose File To Upload</span>
+                                <input type="file" name="file" multiple>
+                            </div>
+                            
+                        </div>
+                        <div class="form-group col-md-2">
+                            <button type="submit" class="btn btn-success btn-block" formnovalidate formaction="/uploads">Save Upload</button>
+                        </div>
+    </form>
       </div>
       </div>
   </div>
