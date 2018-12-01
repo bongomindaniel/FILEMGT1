@@ -15,20 +15,23 @@
 </ul>
     
     </div>
-    <div class="col-md-9 col-centered" style="margin-bottom:40px;">
-        <h4><span class="glyphicon glyphicon-fire" style="font-size:25px;"></span> &nbsp Login</h4><hr style="border-color:#428BCA;">
-        <form action="" method="POST" style="margin-left:20px;">
-            <div class="form-group">
-                <label for="username">user name</label>
-                <input type="text" name="username" class="form-control" value="{{request.form.username}}">
-            </div>
-            <div class="form-group">
-                <label for="username">password</label>
-                <input type="password" name="password" class="form-control" value="{{request.form.password}}">
-            </div>
-            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pushpin"></span>&nbspLogin</button>
-
-        </form>
+    <div class="col-md-9 col-centered" style="margin-bottom:60px;">
+        <div class="logindiv" style="box-shadow: 0 3px 2px #777; padding: 20px;">
+                <h4><span class="glyphicon glyphicon-fire" style="font-size:25px;"></span> &nbsp Login</h4><hr style="border-color:#428BCA;">
+                <form action="" method="POST" style="margin-left:20px; margin-bottom: 10px;">
+                    <div class="form-group">
+                        <label for="username">user name</label>
+                        <input type="text" name="username" class="form-control" value="{{request.form.username}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="username">password</label>
+                        <input type="password" name="password" class="form-control" value="{{request.form.password}}">
+                    </div>
+                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pushpin"></span>&nbspLogin</button>
+        
+                </form>
+        </div>
+        
     </div>
     <hr>
 </div>
