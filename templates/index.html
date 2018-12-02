@@ -26,17 +26,17 @@
       <div style="border: solid  1px; border-radius:5px; height:320px; padding:10px; box-shadow: 0 7px 4px #777;">
       <h4 style="font-wieght:bold;"><span class="glyphicon glyphicon-tags" style="font-size:20px;color:#428BCA;"></span> &nbspTHE DOCUMENT MANAGEMENT SYSTEM</h4>
       <hr style = "border-color:#428BCA;">
-    <form class="md-form" enctype="multipart/form-data" method="POST">
-                        <div class="file-field">
-                            <div class="btn btn-info btn-sm float-left">
-                                <span>Choose File To Upload</span>
+    <form class="md-form" enctype="multipart/form-data" method="POST"  >
+                        <div class="file-field" >
+                            <div class="btn btn-info btn-sm " style=" margin-left:230px">
+                                <span><span class="glyphicon glyphicon-upload"></span>Choose File To Upload</span>
+                                <hr>
                                 <input class="control-item"type="file" name="file" multiple>
+                                <button type="submit" style="margin-top:14px;" class="btn btn-primary btn-block" formnovalidate formaction="/uploads">Save Upload</button>
                             </div>
                             
                         </div>
-                        <div class="form-group col-md-2">
-                            <button type="submit" class="btn btn-success btn-block" formnovalidate formaction="/uploads">Save Upload</button>
-                        </div>
+                        
     </form>
       </div>
       </div>
