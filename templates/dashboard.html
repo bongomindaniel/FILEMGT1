@@ -14,41 +14,46 @@ tr:hover{
 </style>
 
 <div class="container">
-<h4><font style ="color:#428BCA";">Dash-Board</font>&nbsp &nbsp<small style="color:green; font-weight:bold;"><span class="glyphicon glyphicon-user glyphicon-success">&nbsp </span >{{session.username}}</small>
+<h4><font style ="color:#428BCA";">Notice To Public</font>&nbsp &nbsp<small style="color:green; font-weight:bold;"><span class="glyphicon glyphicon-user glyphicon-success">&nbsp </span >{{session.username}}</small>
 </h4>
 <hr style="border-color:#428BCA">
 
-<a href="/add_article"><span class="glyphicon glyphicon-floppy-open" style="font-size:25px;"></span></a>
+<a href="/add_article"><span class="glyphicon glyphicon-floppy-open" style="font-size:25px;"></span>&nbsp Write  Notice</a>
+<div class="noticediv" style="height:300px; box-shadow: 0 0.5px 0 0 #ffffff inset, 0 1px 2px 0 #B3B3B3;overflow: auto;">
 
-<table class="table table-striped">
-    <tr>
-        <th> ID</th>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Date</th>
-        <th></th>
-        <th></th>
-    </tr>
+    <table class="table table-striped">
+        <tr>
+            <th> ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Date</th>
+            <th></th>
+            <th></th>
+        </tr>
+    
+        {% for article in articles  %}
+        <tr>
+            <td><span class="glyphicon glyphicon-folder-open"></span> &nbsp ({{article[0]}})</td>
+            <td>{{article[1]}}</td>
+            <td>{{article[2]}}</td>
+            <td>{{article[4]}}</td>
+            <td>
+            <div style="float:right;">
+            <a href="/get_article/{{article[0]}}" style="text-decoration:none;">
+            <span class="glyphicon glyphicon-edit" style="color:green"></span> &nbsp Edit
+            </a> &nbsp &nbsp
+            <a href="#" style="text-decoration:none;">
+            <span class="glyphicon glyphicon-trash" style="color:red"></span> &nbsp Delete
+            </a>
+            </td>
+            </div>
+        </tr>
+        {% endfor%}
+    </table>
 
-    {% for article in articles  %}
-    <tr>
-        <td><span class="glyphicon glyphicon-folder-open"></span> &nbsp ({{article[0]}})</td>
-        <td>{{article[1]}}</td>
-        <td>{{article[2]}}</td>
-        <td>{{article[4]}}</td>
-        <td>
-        <div style="float:right;">
-        <a href="/get_article/{{article[0]}}" style="text-decoration:none;">
-        <span class="glyphicon glyphicon-edit" style="color:green"></span> &nbsp Edit
-        </a> &nbsp &nbsp
-        <a href="#" style="text-decoration:none;">
-        <span class="glyphicon glyphicon-trash" style="color:red"></span> &nbsp Delete
-        </a>
-        </td>
-        </div>
-    </tr>
-    {% endfor%}
-</table>
+</div>
+
+
 
 </div>
 {% endblock body %}%}

@@ -1,3 +1,4 @@
+import os
 from flask import Flask,render_template,flash,redirect,url_for,session,logging,request
 #from data import Articles
 from flask_mysqldb import MySQL
@@ -5,9 +6,7 @@ from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
 from MySQLdb.cursors import DictCursor
 from functools import wraps
-import os
-
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
@@ -18,6 +17,11 @@ app.config['MYSQL_PASSWORD'] ="danny123"
 app.config['MYSQL_DB']='myflaskapp'
 
 app.config['UPLOAD_FOLDER'] = '/home/danny/Desktop/uploads'
+ALLOWED_EXTENSIONS = set(['txt','pdf'])
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 # app.config['MYSQL_CURSORCLASS'] = 'DictCusor'
 
 # mysql = MySQL()
@@ -326,28 +330,28 @@ def edit_article(id):
 @app.route('/uploads', methods=['GET', 'POST'])
 def upload_doc():
   if request.method == 'POST':
-    our_doc = request.files['file']
-    name = secure_filename(our_doc.filename)
-    path = os.path.join(app.config['UPLOAD_FOLDER'],name)
-    our_doc.save(path)
+    file = request.files['file']
+    if file and allowed_file(file.filename):
+          filename = secure_filename(file.filename)
+          file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
     try:
-      cur = mysql.connection.cursor()
+          cur = mysql.connection.cursor()
 
-      # excecute
-      sql = "INSERT INTO documents(document) values('{}')".format(our_doc.read())
-      cur.execute(sql)
+          # excecute
+          sql = "INSERT INTO documents(document) values('{}')".format(file.read())
+          cur.execute(sql)
 
-    # commit
-      mysql.connection.commit()
+        # commit
+          mysql.connection.commit()
 
-    # close
-      cur.close()
+        # close
+          cur.close()
 
-      flash('Successfully saved the document to database', 'success')
+          flash('Successfully saved the document to database', 'success')
     except Exception as e:
-      raise(e)
-      flash('Error', 'danger')
+          raise(e)
+          flash('Error', 'danger')
 
 
   return render_template('documents.html')
