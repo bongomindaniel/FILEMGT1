@@ -1,0 +1,40 @@
+{% extends 'layout.html'%} 
+{% block body%}
+<style>
+*{
+  font-size:12px;
+}
+</style>
+
+<hr>
+<div class="container" style="border:1px;">
+  <div class="row" style="">
+      <div class="col-md-3">
+      <ul class="list-group list-group-flush">
+  <li class="list-group-item"><h4 style="font-wieght:bold; color:#428BCA;">MY DOCS APP</h4></li>
+  <li class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span> &nbsp Document Share </li>
+  <li class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span> &nbspArticle Store & Share</li>
+  <li class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span> &nbspPassword store</li>
+  <li class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span> &nbspUsers </li>
+  <li class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span> &nbspAbout Us</li>
+  <li class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span> &nbspHelp</li>
+  <li class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span> &nbspFeed back</li>
+</ul>
+      </div>
+      <div class="col-md-9" style = "">
+        
+      <div style="border: solid  1px; border-radius:5px; height:320px; padding:10px; box-shadow: 0 7px 4px #777;">
+        <img src="{{url_for('static', filename='first.png', width=100, height=10, quality=34)}}" />
+
+      </div>
+      <div class='motion' style="box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15); height:30px; padding:2px;">
+        <marquee> <font style="color:#097BED;font-size:19px">UPLOAD & SHARE YOUR DOCUMENTS WITH EASE.... <span class="glyphicon glyphicon-folder-open"></span></font> </marquee>
+
+      </div>
+    
+      </div>
+  </div>
+</div>
+
+ 
+ {% endblock%}

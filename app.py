@@ -4,7 +4,7 @@ from flask import Flask,render_template,flash,redirect,url_for,session,logging,r
 from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
-from MySQLdb.cursors import DictCursor
+from MySQLdb.cursors import DictCursor 
 from functools import wraps
 from werkzeug.utils import secure_filename
 
@@ -34,6 +34,11 @@ mysql = MySQL(app)
 
 # index page
 @app.route('/')
+def index1():
+  return render_template ('index1.html')
+
+
+@app.route('/index')
 def index():
   return render_template ('index.html')
 
